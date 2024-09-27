@@ -1,6 +1,22 @@
-
 import React from 'react';
+import { NumericKeys } from '../../enums/numeric-keys.enum';
+import { OperatorKeys } from '../../enums/operator-keys.enum';
+import { ActionKeys } from '../../enums/action-keys.enum';
 
-export function CalculatorKey(arg: any) {
-  return <button className={`calculator-key ${arg.className}`} onClick={() => alert(`${arg.label}-key pressed`)}>{arg.label}</button>;         
+
+interface IProps {
+  onPress(key: NumericKeys | OperatorKeys | ActionKeys): void;
+  label: NumericKeys | OperatorKeys | ActionKeys;
+  className: string;
+}
+
+export function CalculatorKey(props: IProps) {
+  return (
+    <button
+      className={`calculator-key ${props.className}`}
+      onClick={() => props.onPress(props.label)}
+    >
+      {props.label}
+    </button>
+  );
 }

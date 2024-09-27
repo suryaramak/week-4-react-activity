@@ -1,6 +1,11 @@
 
 import React from 'react';
 
-export function CalculatorDisplay(arg: any) {
-  return <div className="calculator-display">0</div>;
+interface IProps {
+  displayValue: string;
+}
+
+export function CalculatorDisplay(props: IProps) {
+  const value = props.displayValue || "0";
+  return <div className="calculator-display">{value}</div>;
 }
